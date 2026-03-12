@@ -275,6 +275,65 @@ function blowOutCandles() {
 
 }
 
+// Blow detection
+async function startMicDetection() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioContext.createMediaStreamSource(stream);
+    const analyser = audioContext.createAnalyser();
+    analyser.fftSize = 512;
+    source.connect(analyser);
+
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    let blown = false;
+
+    function detectBlow() {
+      analyser.getByteFrequencyData(dataArray);
+
+      let highFreqSum = 0;
+      let lowFreqSum = 0;
+      const midpoint = dataArray.length / 2;
+
+      for (let i = 0; i < dataArray.length; i++) {
+        if (i < midpoint) lowFreqSum += dataArray[i];
+        else highFreqSum += dataArray[i];
+      }
+
+      const highAvg = highFreqSum / (dataArray.length / 2);
+      const lowAvg = lowFreqSum / (dataArray.length / 2);
+      const ratio = highAvg / (lowAvg + 1);
+
+      if (ratio > 0.5 && !blown) {
+        blown = true;
+        blowOutCandles();
+      }
+
+      requestAnimationFrame(detectBlow);
+    }
+
+    detectBlow();
+  } catch (err) {
+    console.error("Mic access error:", err);
+  }
+}
+
+// Blow out candles animation
+function blowOutCandles() {
+  const candles = document.querySelectorAll(".candle");
+  candles.forEach(candle => {
+    const delay = Math.random() * 1000;
+    setTimeout(() => {
+      candle.classList.add("blown"); // CSS will hide or animate the candle flame
+    }, delay);
+  });
+
+  setTimeout(() => {
+    const subTitle = document.getElementById("subTitle");
+    subTitle.textContent = "Yayy! Wishing you the happiest birthday ever!! 🎉";
+  }, 1200);
+}
+
 const btnBack = document.getElementById("btnBack");
 const btnMessage = document.getElementById("btnMessage");
 const btnSurprise = document.getElementById("btnSurprise");

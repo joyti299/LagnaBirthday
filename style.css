@@ -536,81 +536,200 @@ MESSAGE PAGE
   0 0 6px black;
 }
 
-/* Mobile first adjustments */
-@media (max-width: 768px) {
+/* =========================
+RESPONSIVE INTRO SCREEN
+========================= */
+@media (max-width: 1200px) {
+  #intro-screen {
+    gap: 60px;
+  }
   .friend-pic {
-    width: 200px; /* smaller for mobile */
+    width: 280px;
   }
-
+  .friend-pic-back {
+    width: 130%;
+    height: 180%;
+  }
   .ribbon-section {
-    right: 20px;
-    top: 55%;
+    right: 30px;
   }
+}
 
+@media (max-width: 900px) {
+  #intro-screen {
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px;
+  }
+  .friend-pic {
+    width: 220px;
+  }
+  .friend-pic-back {
+    width: 120%;
+    height: 160%;
+  }
+  .ribbon-section {
+    position: relative;
+    top: 0;
+    right: 0;
+    transform: none;
+    margin-top: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #intro-screen {
+    gap: 20px;
+  }
+  .friend-pic {
+    width: 160px;
+  }
+  .friend-pic-back {
+    width: 110%;
+    height: 140%;
+  }
+  .ribbon-section {
+    width: 150px;
+    margin-top: 15px;
+  }
+}
+
+/* =========================
+RESPONSIVE CAKE SCREEN
+========================= */
+@media (max-width: 1200px) {
+  #cake-screen {
+    padding: 20px;
+  }
+  .cake-image {
+    width: 280px;
+  }
+  #birthdayText {
+    font-size: 22px;
+    margin-top: 150px;
+  }
+  .cake-container {
+    margin-bottom: 400px;
+    margin-right: 200px;
+  }
+  .cake-btn {
+    width: 140px;
+  }
+}
+
+@media (max-width: 900px) {
+  #cake-screen {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .cake-image {
+    width: 200px;
+  }
+  #birthdayText {
+    font-size: 20px;
+    margin-top: 120px;
+  }
   .cake-container {
     margin-bottom: 300px;
     margin-right: 0;
   }
+  .cake-btn.left-btn {
+    left: 10px;
+    bottom: 20px;
+  }
+  .cake-btn.right-btn {
+    right: 10px;
+    bottom: 20px;
+  }
+}
 
+@media (max-width: 600px) {
+  .cake-image {
+    width: 100px;
+    margin-right: 90px;
+  }
   #birthdayText {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 100px;
+  }
+  .cake-btn {
+    width: 40px;
+    height: 37px;
+    font-size: 10px;
+  }
+   .tv-frame {
+    width: 100%;
+    max-width: 300px;
+  }
+  .cake-container {
+    margin-bottom: 200px;
+    margin-right: 0;
   }
 
   .cake-image {
-    width: 200px;
+    width: 180px;
+  }
+
+  /* Scrapbook pics around cake */
+  .scrapbook img {
+    display: none;
+  }
+
+  /* Buttons */
+  .cake-btn {
+    padding: 12x 10px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .left-btn {
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .right-btn {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .back-btn-cake {
+    top: 10px;
+    left: 10px;
+  }
+}
+
+/* Extra small screens / Phones */
+@media (max-width: 480px) {
+  .cake-container {
+    margin-bottom: 150px;
+  }
+
+  .cake-image {
+    width: 130px;
+  }
+
+  .scrapbook img {
+    width: 50px;
   }
 
   .cake-btn {
-    width: 140px;
-    height: auto;
-    font-size: 12px;
+    padding: 6px 8px;
+    font-size: 11px;
   }
 
-  .letter {
-    width: 80%;
+  .left-btn {
+    bottom: 8px;
+    left: 8px;
   }
 
-  .tv-frame {
-    width: 90%;
+  .right-btn {
+    bottom: 8px;
+    right: 8px;
   }
 
-  .disk {
-    width: 70px; 
-    height: 70px;
+  .back-btn-cake {
+    top: 2px;
+    left: 2px;
   }
 }
-
-/* Extra large screens */
-@media (min-width: 1200px) {
-  .cake-image {
-    width: 400px;
-  }
-
-  #birthdayText {
-    font-size: 28px;
-  }
-
-  .friend-pic {
-    width: 400px;
-  }
-
-  #ribbon:hover {
-  transform: scale(1.1) rotate(-5deg);
-}
-
-.cake-btn:hover {
-  transform: scale(1.1);
-}
-
-.disk.playing {
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-}
-
