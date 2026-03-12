@@ -14,25 +14,47 @@ const cake = document.getElementById("cake");
 const ribbon = document.getElementById("ribbon");
 const introScreen = document.getElementById("intro-screen");
 const cakeScreen = document.getElementById("cake-screen");
+const bgMusic = document.getElementById("bgMusic");
+
+// ================================
+// PRELOAD MUSIC (OPTION 3)
+// ================================
+window.addEventListener("DOMContentLoaded", () => {
+  if (bgMusic) {
+    bgMusic.volume = 0.5;
+    bgMusic.muted = true; // start muted to satisfy autoplay policy
+    bgMusic.play()
+      .then(() => { bgMusic.muted = false; })
+      .catch(e => {
+        console.log("Autoplay blocked. Music will play after user interaction.");
+      });
+  }
+});
 
 // ================================
 // BUTTERFLY CLICK - SHOW CAKE
 // ================================
 ribbon.addEventListener("click", () => {
-  // slide-out animation
+  if (bgMusic) {
+    bgMusic.play().catch(e => {
+      console.log("User interaction required to play music.");
+    });
+  }
+
+  
   introScreen.classList.add("slide-out");
-
-  // immediately hide intro visually & prevent clicks
-  introScreen.style.display = "none";
-
-  // show cake screen
+  
   cakeScreen.style.display = "flex";
 
-  // update birthday text
+
   birthdayText.innerHTML = `
     <div id="mainTitle">Happy Birthday, ${name}! 🎉</div>
     <div id="subTitle">Make a wish and blow the candles 🎂</div>
   `;
+
+  setTimeout(() => {
+    introScreen.style.display = "none";
+  }, 1200);
 });
 
 // ================================
@@ -44,14 +66,14 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const confetti = [];
+
 const confettiColors = [
   "#ffd6f6","#ffc8dd","#ffdee9","#f8c8ff","#e6ccff",
   "#d8b4ff","#f8e8ff","#e0f7ff","#d6faff","#d4ffe6",
   "#faffd6","#fff0f6","#ffffff"
 ];
 
-// create confetti
+const confetti = [];
 for (let i = 0; i < 120; i++) {
   confetti.push({
     x: Math.random() * canvas.width,
@@ -78,7 +100,7 @@ function drawConfetti() {
 
 drawConfetti();
 
-// handle window resize
+
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -100,7 +122,7 @@ function createCandles(count) {
     const candle = document.createElement("div");
     candle.classList.add("candle");
 
-    // random candle color
+
     const colorClass = candleColors[Math.floor(Math.random() * candleColors.length)];
     candle.classList.add(colorClass);
 
@@ -158,6 +180,7 @@ async function startMicDetection() {
         blowOutCandles();
       }
 
+    
       requestAnimationFrame(detectBlow);
     }
 
@@ -166,6 +189,7 @@ async function startMicDetection() {
     console.error("Mic access error:", err);
   }
 }
+startMicDetection();
 
 // ================================
 // BLOW OUT CANDLES
@@ -185,5 +209,3 @@ function blowOutCandles() {
     subTitle.textContent = "Yayy! Wishing you the happiest birthday ever!! 🎉";
   }, 1200);
 }
-
-startMicDetection();
