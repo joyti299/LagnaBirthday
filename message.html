@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Letter For My Baby 💌</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="message-page">
+
+  <!-- Back Button -->
+  <button class="back-btn" onclick="window.location.href='cake.html'">
+    <img src="picture/return.png" class="btn-img">
+  </button>
+
+  <!-- Custom Song -->
+  <audio autoplay loop>
+    <source src="sounds/message-song.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Letter Image (contains the message already) -->
+  <div class="letter-container">
+    <img src="picture/letter.jpeg" class="letter-img" alt="Letter Message">
+  </div>
+
+<!-- Music Disk -->
+<div class="music-disk-container" style="display:flex; flex-direction:column; align-items:center; margin-right:20px;">
+  <img src="picture/cd.png" 
+       class="music-disk" 
+       id="musicDisk" 
+       alt="Music Disk" 
+       style="cursor:pointer; width:100px; height:100px;"> <!-- fixed size -->
+  <span style="color:rgb(245, 72, 161); text-shadow: 2px 2px 6px rgb(255, 255, 255); font-size:14px; margin-top:8px; text-align:center;">
+    🎵 click to play OUR SONG!
+  </span>
+  <audio id="favoriteSong" src="sounds/Perfect Two.mp3"></audio>
+</div>
+
+<script>
+const disk = document.getElementById("musicDisk");
+const song = document.getElementById("favoriteSong");
+let rotation = 0;
+let spinning = null;
+
+disk.addEventListener("click", () => {
+  if(song.paused){
+    song.play();
+    // start rotation
+    spinning = setInterval(() => {
+      rotation += 2; // rotation speed
+      disk.style.transform = `rotate(${rotation}deg)`;
+    }, 16); // ~60fps
+  } else {
+    song.pause();
+    clearInterval(spinning);
+  }
+});
+
+// stop rotation when song ends
+song.addEventListener("ended", () => {
+  clearInterval(spinning);
+});
+</script>
+
+</body>
+</html>

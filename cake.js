@@ -6,6 +6,7 @@ const name = params.get("name") || "Bestie";
 let candleCount = parseInt(params.get("candles")) || 4;
 candleCount = Math.min(Math.max(candleCount, 1), 30);
 
+
 // ================================
 // ELEMENTS
 // ================================
@@ -273,3 +274,27 @@ function blowOutCandles() {
   }, 1200);
 
 }
+
+const btnBack = document.getElementById("btnBack");
+const btnMessage = document.getElementById("btnMessage");
+const btnSurprise = document.getElementById("btnSurprise");
+
+btnBack.addEventListener("click", () => {
+  // Slide back to intro screen
+  document.getElementById("cake-screen").classList.remove("show-cake");
+  document.getElementById("intro-screen").classList.remove("slide-left");
+});
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("show") === "cake") {
+    const introScreen = document.getElementById("intro-screen");
+    const cakeScreen = document.getElementById("cake-screen");
+
+    if (introScreen && cakeScreen) {
+      introScreen.classList.add("slide-left");
+      cakeScreen.classList.add("show-cake");
+    }
+  }
+});

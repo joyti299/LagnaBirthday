@@ -326,6 +326,212 @@ h1 {
   }
 }
 
+.cake-btn {
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect */
+.cake-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Back button (top-left corner) */
+.back-btn {
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+}
+
+.cake-btn {
+  position: absolute;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: none; /* remove default pink */
+  text-align: center;
+  overflow: visible;
+}
+
+.cake-btn .btn-img {
+  width: 100%; /* make image fit button */
+  display: block;
+  border-radius: 20px; /* optional */
+}
+
+.cake-btn .btn-text {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center text on image */
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
 
 
+/* Left Bottom Button */
+.left-btn {
+  bottom: 45px;
+  left: 55px;
+  width: 200px;
+  height: 60px;
+}
 
+/* Right Bottom Button */
+.right-btn {
+  bottom: 45px;
+  right: 55px;
+  width: 200px;
+  height: 60px;
+}
+
+/* Hover effect */
+.cake-btn:hover {
+  transform: scale(1.1);
+}
+
+/* the surprise page */
+
+.surprise-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('picture/bgsur.jpg') no-repeat center/cover;
+  position: relative;
+}
+
+.tv-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tv-frame {
+  width: 800px;           /* same as before */
+  max-width: 90%;
+  height: 500px;          /* increased height */
+  padding: 20px;
+  background: #222;
+  border: 12px solid #555; 
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tv-frame video {
+  width: 100%;
+  height: 100%;          /* fill the new height */
+  object-fit: contain;   /* maintain aspect ratio */
+  border-radius: 10px;
+  background: black;
+}
+
+/* Back Button Styling */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  background: pink;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+.back-btn .btn-text {
+  color: white;
+  text-shadow: 2px 2px 6px black;
+  font-weight: bold;
+}
+
+.back-btn img {
+  width: 50px;
+  height: 45px;
+}
+
+
+/* =========================
+MESSAGE PAGE
+========================= */
+
+.message-page{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background-image:url("picture/cutebg.jpg"); /* your background */
+  background-size:cover;
+  background-position:center;
+
+  position:relative;
+}
+
+/* Center container */
+.letter-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Letter image */
+.letter-img{
+  width:500px;       /* adjust if needed */
+  max-width:90%;
+
+  border-radius:15px;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,0.4),
+  0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Back button position */
+.back-btn{
+  position:absolute;
+  top:20px;
+  left:20px;
+
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+
+/* back icon */
+.back-btn .btn-img{
+  width:45px;
+}
+
+/* back text */
+.back-btn .btn-text{
+  position:absolute;
+  top:65%;
+  left:50%;
+  transform:translate(-50%,-50%);
+
+  color:white;
+  font-size:14px;
+
+  text-shadow:
+  2px 2px 6px black,
+  0 0 6px black;
+}
