@@ -535,3 +535,82 @@ MESSAGE PAGE
   2px 2px 6px black,
   0 0 6px black;
 }
+
+/* Mobile first adjustments */
+@media (max-width: 768px) {
+  .friend-pic {
+    width: 200px; /* smaller for mobile */
+  }
+
+  .ribbon-section {
+    right: 20px;
+    top: 55%;
+  }
+
+  .cake-container {
+    margin-bottom: 300px;
+    margin-right: 0;
+  }
+
+  #birthdayText {
+    font-size: 20px;
+    margin-top: 100px;
+  }
+
+  .cake-image {
+    width: 200px;
+  }
+
+  .cake-btn {
+    width: 140px;
+    height: auto;
+    font-size: 12px;
+  }
+
+  .letter {
+    width: 80%;
+  }
+
+  .tv-frame {
+    width: 90%;
+  }
+
+  .disk {
+    width: 70px; 
+    height: 70px;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1200px) {
+  .cake-image {
+    width: 400px;
+  }
+
+  #birthdayText {
+    font-size: 28px;
+  }
+
+  .friend-pic {
+    width: 400px;
+  }
+
+  #ribbon:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.cake-btn:hover {
+  transform: scale(1.1);
+}
+
+.disk.playing {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+}
+
