@@ -83,53 +83,7 @@ GLOBAL RESET
     bounce{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-15px); } }
 
 
- /* =========================
-CURTAIN EFFECT
-========================= */
-
-#curtain{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100vh;
-  display:flex;
-  z-index:9999;
-  opacity:0;              /* hidden first */
-  pointer-events:none;
-}
-
-/* curtain panels */
-.curtain-left,
-.curtain-right{
-  width:50%;
-  height:100%;
-  background:linear-gradient(#ff6ec7,#ff9de2);
-  transition:transform 1.5s ease-in-out;
-}
-
-/* start closed */
-.curtain-left{
-  transform:translateX(0);
-}
-
-.curtain-right{
-  transform:translateX(0);
-}
-
-/* when activated */
-#curtain.show{
-  opacity:1;
-}
-
-/* open animation */
-#curtain.open .curtain-left{
-  transform:translateX(-100%);
-}
-
-#curtain.open .curtain-right{
-  transform:translateX(100%);
-}
+ 
 
 /* =========================
 CONFETTI CANVAS
